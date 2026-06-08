@@ -37,7 +37,7 @@ export function BrowserMockup({ className, specialty, title, accent = "cyan" }: 
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-3xl border border-neutral-900/10 bg-white shadow-xl shadow-neutral-900/10",
+        "overflow-hidden rounded-2xl border border-neutral-900/10 bg-white shadow-xl shadow-neutral-900/10 md:rounded-3xl",
         className,
       )}
       aria-label={`${specialty} website mockup`}
@@ -49,12 +49,12 @@ export function BrowserMockup({ className, specialty, title, accent = "cyan" }: 
         <div className="ml-3 h-5 flex-1 rounded-full bg-white" />
       </div>
 
-      <div className="grid gap-5 p-5">
-        <div className={cn("overflow-hidden rounded-2xl border p-5", color.soft, color.border)}>
+      <div className="grid gap-4 p-4 md:gap-5 md:p-5">
+        <div className={cn("overflow-hidden rounded-2xl border p-4 md:p-5", color.soft, color.border)}>
           <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className={cn("font-mono text-[0.62rem] uppercase tracking-[0.28em]", color.text)}>{specialty}</p>
-              <h3 className="mt-3 max-w-[13rem] text-balance font-mono text-xl uppercase leading-tight tracking-[0.08em] text-neutral-950">
+            <div className="min-w-0">
+              <p className={cn("font-mono text-[0.62rem] uppercase tracking-[0.18em] md:tracking-[0.28em]", color.text)}>{specialty}</p>
+              <h3 className="mt-3 max-w-[13rem] text-balance font-mono text-base uppercase leading-tight tracking-[0.08em] text-neutral-950 md:text-xl">
                 {title}
               </h3>
             </div>
@@ -66,9 +66,9 @@ export function BrowserMockup({ className, specialty, title, accent = "cyan" }: 
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2 md:gap-3">
           {[0, 1, 2].map((item) => (
-            <div key={item} className="rounded-2xl border border-neutral-900/10 bg-neutral-50 p-3">
+            <div key={item} className="rounded-xl border border-neutral-900/10 bg-neutral-50 p-2 md:rounded-2xl md:p-3">
               <span className={cn("block h-2 w-10 rounded-full", item === 0 ? color.line : "bg-neutral-300")} />
               <span className="mt-4 block h-2 w-full rounded-full bg-neutral-300/80" />
               <span className="mt-2 block h-2 w-4/5 rounded-full bg-neutral-300/60" />
@@ -84,7 +84,7 @@ export function MobileMockup({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-[15rem] rounded-[2rem] border border-neutral-900/10 bg-neutral-950 p-2 shadow-2xl shadow-cyan-950/15",
+        "mx-auto w-full max-w-[13.5rem] rounded-[1.6rem] border border-neutral-900/10 bg-neutral-950 p-2 shadow-2xl shadow-cyan-950/15 md:max-w-[15rem] md:rounded-[2rem]",
         className,
       )}
       aria-label="Mobile appointment request mockup"
@@ -93,7 +93,7 @@ export function MobileMockup({ className }: { className?: string }) {
         <div className="mx-auto mt-2 h-1.5 w-16 rounded-full bg-neutral-900/15" />
         <div className="p-4">
           <div className="rounded-2xl bg-cyan-50 p-4">
-            <p className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-cyan-900/70">New Patients</p>
+            <p className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-cyan-900/70 md:tracking-[0.24em]">New Patients</p>
             <h3 className="mt-3 font-mono text-base uppercase leading-tight tracking-[0.08em] text-neutral-950">
               Request an appointment
             </h3>
@@ -133,7 +133,7 @@ export function ProcessPreview({ label, title, className }: ProcessPreviewProps)
         <span className="h-2 w-8 rounded-full bg-cyan-700/25" />
       </div>
       <div className="mt-4 rounded-xl bg-cyan-50 p-3">
-        <p className="font-mono text-[0.65rem] uppercase leading-snug tracking-[0.12em] text-neutral-950">{title}</p>
+        <p className="font-mono text-[0.65rem] uppercase leading-snug tracking-[0.08em] text-neutral-950 md:tracking-[0.12em]">{title}</p>
         <span className="mt-3 block h-2 w-full rounded-full bg-cyan-800/25" />
         <span className="mt-2 block h-2 w-2/3 rounded-full bg-cyan-800/15" />
       </div>

@@ -21,7 +21,7 @@ export function AboutSection() {
               eyebrow="About Me"
               title="A medical student building better websites for doctors."
             />
-            <div className="mx-auto w-full max-w-64 overflow-hidden rounded-3xl border border-neutral-900/10 bg-white p-2 shadow-lg shadow-neutral-900/10">
+            <div className="mx-auto w-full max-w-56 overflow-hidden rounded-2xl border border-neutral-900/10 bg-white p-2 shadow-lg shadow-neutral-900/10 md:max-w-64 md:rounded-3xl">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-100">
                 <Image
                   src="/placeholder-user.jpg"
@@ -36,7 +36,7 @@ export function AboutSection() {
         </Reveal>
 
         <div className="lg:col-span-7">
-          <div className="space-y-6 border-l border-neutral-900/10 pl-6 md:pl-10">
+          <div className="space-y-5 border-l border-neutral-900/10 pl-5 md:space-y-6 md:pl-10">
             {paragraphs.map((paragraph, index) => (
               <Reveal key={paragraph} delay={index * 70} rootMargin="0px 0px 15% 0px" threshold={0}>
                 <p className="text-pretty text-base leading-relaxed text-neutral-600 md:text-lg">{paragraph}</p>
@@ -44,7 +44,7 @@ export function AboutSection() {
             ))}
 
             <Reveal delay={paragraphs.length * 70} rootMargin="0px 0px 15% 0px" threshold={0}>
-              <p className="pt-4 font-mono text-sm uppercase leading-relaxed tracking-[0.24em] text-neutral-950">
+              <p className="pt-4 font-mono text-sm uppercase leading-relaxed tracking-[0.16em] text-neutral-950 md:tracking-[0.24em]">
                 -George Verdelis
               </p>
             </Reveal>

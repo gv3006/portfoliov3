@@ -128,10 +128,10 @@ export function WebsiteMattersSection() {
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.8fr]">
         <Reveal>
           <header className="max-w-3xl">
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-cyan-700/70">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-700/70 md:tracking-[0.35em]">
               Evidence-Based Digital Presence
             </p>
-            <h2 className="why-matters-heading-load mt-4 text-balance font-mono text-4xl uppercase tracking-tight md:text-6xl">
+            <h2 className="why-matters-heading-load mt-4 text-balance font-mono text-3xl uppercase tracking-tight md:text-6xl">
               Why Your Website Matters
             </h2>
             <p className="why-matters-subheading-load mt-6 text-pretty text-base leading-relaxed text-neutral-600 md:text-lg">
@@ -151,7 +151,7 @@ export function WebsiteMattersSection() {
         </Reveal>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2">
         {reasons.map((reason, index) => (
           <Reveal
             key={reason.number}
@@ -160,15 +160,15 @@ export function WebsiteMattersSection() {
             rootMargin="0px 0px 15% 0px"
             threshold={0}
           >
-            <article className="group relative h-full overflow-hidden rounded-3xl border border-neutral-900/10 bg-white p-10 shadow-sm shadow-neutral-900/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-700/20 hover:bg-[#fbfcfa] hover:shadow-lg hover:shadow-cyan-950/5 focus-within:border-cyan-700/20 focus-within:bg-[#fbfcfa]">
+            <article className="group relative h-full overflow-hidden rounded-2xl border border-neutral-900/10 bg-white p-6 shadow-sm shadow-neutral-900/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-700/20 hover:bg-[#fbfcfa] hover:shadow-lg hover:shadow-cyan-950/5 focus-within:border-cyan-700/20 focus-within:bg-[#fbfcfa] md:rounded-3xl md:p-10">
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(8,145,178,0.10),transparent_34%)]" />
               </div>
 
               <div className="relative z-10">
-                <span className="font-mono text-xs tracking-[0.35em] text-cyan-800/45">{reason.number}</span>
+                <span className="font-mono text-xs tracking-[0.28em] text-cyan-800/45 md:tracking-[0.35em]">{reason.number}</span>
 
-                <h3 className="mt-6 text-balance font-mono text-xl uppercase tracking-[0.18em] text-neutral-950">
+                <h3 className="mt-5 text-balance font-mono text-lg uppercase tracking-[0.12em] text-neutral-950 md:mt-6 md:text-xl md:tracking-[0.18em]">
                   {reason.title}
                 </h3>
 
@@ -180,11 +180,11 @@ export function WebsiteMattersSection() {
       </div>
 
       <Reveal delay={320} rootMargin="0px 0px 15% 0px" threshold={0}>
-        <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-900/10 bg-white/90 shadow-sm shadow-neutral-900/5">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-neutral-900/10 bg-white/90 shadow-sm shadow-neutral-900/5 md:rounded-3xl">
           <Accordion type="single" collapsible>
             <AccordionItem value="references" className="border-b-0">
               <AccordionTrigger className="px-6 py-5 hover:bg-cyan-50/60 hover:no-underline focus-visible:ring-cyan-700/30 md:px-8 [&>svg]:text-neutral-500">
-                <span className="font-mono text-xs uppercase tracking-[0.35em] text-neutral-500">References</span>
+                <span className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500 md:tracking-[0.35em]">References</span>
               </AccordionTrigger>
 
               <AccordionContent className="pb-0">

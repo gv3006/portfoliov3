@@ -23,9 +23,9 @@ export function ContactSection() {
           description="Tell us about your project. This is a placeholder form - submissions are not yet wired to a backend."
         />
       </Reveal>
-      <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="mt-10 grid grid-cols-1 gap-10 md:mt-16 lg:grid-cols-2 lg:gap-12">
         <Reveal delay={80}>
-          <form onSubmit={handleSubmit} className="space-y-6 max-w-xl">
+          <form onSubmit={handleSubmit} className="max-w-xl space-y-6">
             <div className="space-y-2">
               <label htmlFor="name" className="block font-mono text-xs tracking-widest uppercase text-neutral-500">
                 Name
@@ -67,7 +67,7 @@ export function ContactSection() {
             </div>
             <button
               type="submit"
-              className="font-mono text-xs tracking-widest uppercase bg-neutral-950 text-white rounded-full px-8 py-3 hover:bg-cyan-950 transition-colors"
+              className="w-full rounded-full bg-neutral-950 px-8 py-3 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-cyan-950 sm:w-auto"
             >
               Send Message
             </button>
@@ -97,7 +97,7 @@ export function ContactSection() {
             </div>
             <div>
               <p className="text-xs tracking-widest uppercase text-neutral-500">Social</p>
-              <div className="mt-2 flex gap-4 text-neutral-700">
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-neutral-700">
                 <span className="hover:text-cyan-800 transition-colors cursor-pointer">Instagram</span>
                 <span className="hover:text-cyan-800 transition-colors cursor-pointer">Behance</span>
                 <span className="hover:text-cyan-800 transition-colors cursor-pointer">LinkedIn</span>

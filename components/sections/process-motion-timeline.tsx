@@ -276,7 +276,7 @@ export function ProcessMotionTimeline({ steps }: ProcessMotionTimelineProps) {
   )
 
   return (
-    <div ref={rootRef} className="relative mt-16 overflow-hidden py-4">
+    <div ref={rootRef} className="relative mt-10 overflow-hidden py-4 md:mt-16">
       <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full" aria-hidden="true">
         {pathD ? (
           <>
@@ -320,7 +320,7 @@ export function ProcessMotionTimeline({ steps }: ProcessMotionTimelineProps) {
         </defs>
       </svg>
 
-      <div className="relative z-10 space-y-14 pl-14 md:space-y-24 md:pl-0">
+      <div className="relative z-10 space-y-10 pl-11 md:space-y-24 md:pl-0">
         {steps.map((step, index) => {
           const isLeftCard = index % 2 === 0
 
@@ -331,17 +331,17 @@ export function ProcessMotionTimeline({ steps }: ProcessMotionTimelineProps) {
                 cardRefs.current[index] = element
               }}
               className={cn(
-                "group relative grid max-w-xl gap-5 rounded-2xl border border-neutral-900/10 bg-white/92 p-6 shadow-sm shadow-neutral-900/5 transition-colors duration-300 hover:border-cyan-700/20 hover:bg-white hover:shadow-lg hover:shadow-cyan-950/5 md:w-[46%] md:p-7",
+                "group relative grid max-w-xl gap-5 rounded-2xl border border-neutral-900/10 bg-white/92 p-5 shadow-sm shadow-neutral-900/5 transition-colors duration-300 hover:border-cyan-700/20 hover:bg-white hover:shadow-lg hover:shadow-cyan-950/5 md:w-[46%] md:p-7",
                 isLeftCard ? "md:mr-auto" : "md:ml-auto",
               )}
             >
-              <div className="flex items-start gap-4">
-                <span className="font-mono text-xs tracking-[0.35em] text-cyan-800/45">
+              <div className="flex min-w-0 items-start gap-3 md:gap-4">
+                <span className="shrink-0 font-mono text-xs tracking-[0.28em] text-cyan-800/45 md:tracking-[0.35em]">
                   {step.number}
                 </span>
 
-                <div>
-                  <h3 className="font-mono text-lg uppercase tracking-[0.18em] text-neutral-950">
+                <div className="min-w-0">
+                  <h3 className="text-balance font-mono text-base uppercase tracking-[0.12em] text-neutral-950 md:text-lg md:tracking-[0.18em]">
                     {step.title}
                   </h3>
 

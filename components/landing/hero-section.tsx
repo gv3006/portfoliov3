@@ -113,7 +113,7 @@ function BlurWord({ word, trigger }: { word: string; trigger: number }) {
               transition: "color 0.4s ease",
             }}
           >
-            {char === " " ? "\u00A0" : char}
+            {char}
           </span>
         );
       })}
@@ -141,7 +141,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex flex-col justify-center items-start overflow-hidden bg-black">
       {/* Background */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#05070b]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(14,116,144,0.16),transparent_34%),radial-gradient(circle_at_85%_70%,rgba(56,189,248,0.08),transparent_32%),linear-gradient(180deg,#070a12_0%,#05070b_55%,#020309_100%)]" />
+        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70" />
@@ -174,7 +174,7 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 py-28 sm:px-6 md:py-32 lg:px-12 lg:py-40">
         <div className="lg:max-w-[55%]">
           {/* Eyebrow */}
           <div
@@ -182,8 +182,8 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-white/60">
-              <span className="w-8 h-px bg-white/30" />
+            <span className="inline-flex max-w-full items-center gap-3 text-sm font-mono text-white/60">
+              <span className="h-px w-6 shrink-0 bg-white/30 sm:w-8" />
               Modern Healthcare Website Design
             </span>
           </div>
@@ -191,19 +191,19 @@ export function HeroSection() {
           {/* Main headline */}
           <div className="mb-12">
             <h1
-              className={`text-left text-[clamp(2rem,6vw,7rem)] font-display leading-[0.92] tracking-tight text-white transition-all duration-1000 ${
+              className={`text-left text-[clamp(2.25rem,13vw,4.5rem)] font-display leading-[0.98] tracking-tight text-white transition-all duration-1000 sm:text-[clamp(2rem,6vw,7rem)] sm:leading-[0.92] ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <span className="block whitespace-nowrap">Your website should</span>
+              <span className="block sm:whitespace-nowrap">Your website should</span>
 
-              <span className="block whitespace-nowrap">
+              <span className="block sm:whitespace-nowrap">
                 <span className="relative inline-block">
                   <BlurWord word={words[wordIndex]} trigger={wordIndex} />
                 </span>
               </span>
 
-              <span className="block whitespace-nowrap">Let&apos;s get started.</span>
+              <span className="block sm:whitespace-nowrap">Let&apos;s get started.</span>
             </h1>
           </div>
         </div>

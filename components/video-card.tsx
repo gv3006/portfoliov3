@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 
 interface Project {
@@ -17,11 +17,12 @@ interface VideoCardProps {
   isHovered: boolean
   isDimmed: boolean
   onHoverChange: (hovered: boolean) => void
+  isMobileLayout?: boolean
 }
 
-export function VideoCard({ project, isHovered, isDimmed, onHoverChange }: VideoCardProps) {
+export function VideoCard({ project, isHovered, isDimmed, onHoverChange, isMobileLayout = false }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const showDetails = isMobileLayout || isHovered
 
   useEffect(() => {
     if (isHovered && videoRef.current) {
@@ -36,10 +37,10 @@ export function VideoCard({ project, isHovered, isDimmed, onHoverChange }: Video
   return (
     <div
       className={cn(
-        "group relative rounded-[2.5rem] overflow-hidden bg-neutral-100",
+        "group relative flex-none overflow-hidden rounded-[1.5rem] bg-neutral-100 md:rounded-[2.5rem]",
         "transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
-        "h-[600px] min-w-[180px]",
-        isHovered ? "flex-[2] shadow-2xl shadow-cyan-950/15" : "flex-[0.8]",
+        "h-[420px] w-[78vw] max-w-[22rem] md:h-[600px] md:w-auto md:max-w-none md:min-w-[180px]",
+        isHovered ? "md:flex-[2] md:shadow-2xl md:shadow-cyan-950/15" : "md:flex-[0.8]",
       )}
       onMouseEnter={() => onHoverChange(true)}
       onMouseLeave={() => onHoverChange(false)}
@@ -51,7 +52,7 @@ export function VideoCard({ project, isHovered, isDimmed, onHoverChange }: Video
           alt={project.title}
           className={cn(
             "w-full h-full object-cover object-top origin-top transition-all duration-700",
-            !isHovered && "grayscale brightness-75",
+            !showDetails && "grayscale brightness-75",
           )}
         />
         <div
@@ -71,7 +72,6 @@ export function VideoCard({ project, isHovered, isDimmed, onHoverChange }: Video
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => setIsVideoLoaded(true)}
         >
           <source src={project.video} type="video/mp4" />
         </video>
@@ -79,24 +79,24 @@ export function VideoCard({ project, isHovered, isDimmed, onHoverChange }: Video
 
       <div
         className={cn(
-          "absolute bottom-0 left-0 right-0 p-8",
-          isHovered ? "" : "pointer-events-none",
+          "absolute bottom-0 left-0 right-0 p-4 md:p-8",
+          showDetails ? "" : "pointer-events-none",
         )}
       >
         {/* Glassmorphic card */}
         <div
           className={cn(
-            "relative backdrop-blur-xl bg-black/20 rounded-2xl p-6 border border-white/10",
+            "relative rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur-xl md:bg-black/20 md:p-6",
             "shadow-2xl",
             "transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
-            isHovered ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+            showDetails ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
           )}
         >
           <div className="space-y-1 text-left">
-            <h3 className="text-white font-mono text-sm tracking-[0.3em] uppercase font-medium leading-relaxed">
+            <h3 className="text-white font-mono text-xs tracking-[0.2em] uppercase font-medium leading-relaxed md:text-sm md:tracking-[0.3em]">
               {project.title}
             </h3>
-            <p className="text-white/80 font-mono text-xs tracking-[0.25em] uppercase leading-relaxed">
+            <p className="text-white/80 font-mono text-[0.68rem] tracking-[0.18em] uppercase leading-relaxed md:text-xs md:tracking-[0.25em]">
               {project.category}
             </p>
             <div className="pt-3 mt-3 border-t border-white/10">

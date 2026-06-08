@@ -52,7 +52,21 @@ export function WorksGallery() {
 
   return (
     <div className="w-full overflow-hidden">
-      <div className="works-gallery-marquee overflow-hidden">
+      <div className="flex gap-4 overflow-x-auto px-6 pb-4 snap-x snap-mandatory md:hidden">
+        {projects.map((project) => (
+          <div key={project.id} className="snap-center">
+            <VideoCard
+              project={project}
+              isHovered={false}
+              isDimmed={false}
+              isMobileLayout
+              onHoverChange={() => {}}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="works-gallery-marquee hidden overflow-hidden md:block">
         <div className="works-gallery-track flex w-max items-stretch">
           {[0, 1].map((loopIndex) => (
             <div key={loopIndex} className="works-gallery-set flex shrink-0 items-stretch gap-4 pr-4">
