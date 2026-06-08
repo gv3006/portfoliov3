@@ -9,19 +9,20 @@ interface ScrollSlideInProps {
   children: React.ReactNode
   className?: string
   stagger?: number
+  rootMargin?: string
+  threshold?: number
 }
 
-const clamp = (value: number) => Math.min(Math.max(value, 0), 1)
-const easeOutCubic = (value: number) => 1 - Math.pow(1 - value, 3)
-
-export function ScrollSlideIn({ children, className, stagger = 0 }: ScrollSlideInProps) {
+export function ScrollSlideIn({
+  children,
+  className,
+  stagger = 0,
+  rootMargin = "-18% 0px -18% 0px",
+  threshold = 0,
+}: ScrollSlideInProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const frameRef = useRef<number | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
   const [shouldReduceMotion, setShouldReduceMotion] = useState(false)
-  const [style, setStyle] = useState<React.CSSProperties>({
-    opacity: 0.2,
-    transform: "translate3d(min(72vw, 520px), 0, 0)",
-  })
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -37,50 +38,32 @@ export function ScrollSlideIn({ children, className, stagger = 0 }: ScrollSlideI
     const element = ref.current
 
     if (!element || shouldReduceMotion) {
-      setStyle({ opacity: 1, transform: "translate3d(0, 0, 0)" })
+      setIsVisible(true)
       return
     }
 
-    const updatePosition = () => {
-      frameRef.current = null
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { rootMargin, threshold },
+    )
 
-      const rect = element.getBoundingClientRect()
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight
-      const start = viewportHeight * 0.92
-      const distance = viewportHeight * 0.42
-      const rawProgress = clamp((start - rect.top) / distance)
-      const progress = clamp((rawProgress - stagger) / (1 - stagger))
-      const eased = easeOutCubic(progress)
-      const offset = (1 - eased) * Math.min(window.innerWidth * 0.72, 520)
+    observer.observe(element)
 
-      setStyle({
-        opacity: 0.2 + eased * 0.8,
-        transform: `translate3d(${offset}px, 0, 0)`,
-      })
-    }
-
-    const requestUpdate = () => {
-      if (frameRef.current === null) {
-        frameRef.current = window.requestAnimationFrame(updatePosition)
-      }
-    }
-
-    updatePosition()
-    window.addEventListener("scroll", requestUpdate, { passive: true })
-    window.addEventListener("resize", requestUpdate)
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate)
-      window.removeEventListener("resize", requestUpdate)
-
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current)
-      }
-    }
-  }, [shouldReduceMotion, stagger])
+    return () => observer.disconnect()
+  }, [rootMargin, shouldReduceMotion, threshold])
 
   return (
-    <div ref={ref} className={cn("will-change-transform", className)} style={style}>
+    <div
+      ref={ref}
+      className={cn(
+        "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+        isVisible ? "translate-x-0 opacity-100" : "translate-x-[min(72vw,520px)] opacity-20",
+        className,
+      )}
+      style={!shouldReduceMotion && isVisible ? { transitionDelay: `${stagger * 1000}ms` } : undefined}
+    >
       {children}
     </div>
   )

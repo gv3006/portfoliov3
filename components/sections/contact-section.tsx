@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Reveal } from "@/components/reveal"
 import { Section, SectionHeading } from "./section"
+import { MobileMockup } from "@/components/sample-graphics"
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
@@ -81,6 +82,7 @@ export function ContactSection() {
 
         <Reveal delay={160}>
           <div className="space-y-8 font-mono text-sm">
+            <MobileMockup className="mx-0" />
             <div>
               <p className="text-xs tracking-widest uppercase text-neutral-500">Email</p>
               <p className="mt-2 text-neutral-700">hello@studiopixel.example</p>

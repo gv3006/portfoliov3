@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { cn } from "@/lib/utils"
 
 const links = [
   { id: "why-it-matters", label: "WHY IT MATTERS" },
-  { id: "process", label: "PROCESS" },
+  { id: "gallery", label: "GALLERY" },
   { id: "services", label: "SERVICES" },
+  { id: "process", label: "PROCESS" },
   { id: "about", label: "ABOUT" },
   { id: "faq", label: "FAQ" },
   { id: "contact", label: "GET IN TOUCH" },
@@ -43,11 +43,11 @@ export function SiteHeader() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center gap-8 px-6 py-6">
-      <nav className="flex items-center gap-8 text-sm font-mono tracking-wider">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-neutral-900/10 bg-white/75 px-4 py-2 shadow-sm shadow-neutral-900/5 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-7xl items-center justify-center gap-6 overflow-x-auto text-sm font-mono tracking-wider">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-neutral-950 hover:text-cyan-800 transition-colors font-semibold"
+          className="text-neutral-950 transition-colors font-semibold"
         >
           STUDIO PIXEL®
         </button>
@@ -55,10 +55,8 @@ export function SiteHeader() {
           <button
             key={link.id}
             onClick={() => scrollToId(link.id)}
-            className={cn(
-              "transition-colors",
-              active === link.id ? "text-neutral-950" : "text-neutral-500 hover:text-cyan-800",
-            )}
+            aria-current={active === link.id ? "location" : undefined}
+            className="text-neutral-950 transition-colors"
           >
             {link.label}
           </button>
@@ -66,7 +64,7 @@ export function SiteHeader() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Back to top"
-          className="w-8 h-8 flex items-center justify-center text-neutral-950 hover:text-cyan-800 transition-colors"
+          className="w-8 h-8 flex items-center justify-center text-neutral-950 transition-colors"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="8" height="8" fill="currentColor" />

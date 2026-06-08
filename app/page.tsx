@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/site-header"
+import { HeroSection } from "@/components/landing/hero-section"
 import { WorksGallery } from "@/components/works-gallery"
 import { BackToTop } from "@/components/back-to-top"
 import { WebsiteMattersSection } from "@/components/sections/website-matters-section"
@@ -13,23 +14,24 @@ export default function Page() {
     <div className="grain-background min-h-screen bg-[radial-gradient(circle_at_15%_8%,rgba(255,226,199,0.55),transparent_34%),radial-gradient(circle_at_85%_72%,rgba(207,244,242,0.42),transparent_32%),linear-gradient(135deg,#fffaf3_0%,#f7f8f5_46%,#f2f7f2_100%)] text-neutral-950">
       <SiteHeader />
 
-      {/* Landing hero — Works Gallery */}
-      <main className="pt-32 pb-16">
-        <div className="mx-auto max-w-4xl px-6 pb-16 text-center">
-          <h1 className="font-mono text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-balance">
-            Your website should reflect the quality of your care
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl font-mono text-sm md:text-base leading-relaxed tracking-wide text-neutral-600 text-pretty">
-            Explore modern website options built to help patients trust your practice and take the next step
-          </p>
-        </div>
-        <WorksGallery />
-      </main>
+      <HeroSection />
 
       {/* In-page sections */}
       <WebsiteMattersSection />
-      <ProcessSection />
+
+      {/* Works Gallery */}
+      <section id="gallery" className="scroll-mt-28 border-t border-neutral-900/10 py-24">
+        <div className="mx-auto mb-10 max-w-6xl px-6">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Gallery</p>
+          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-neutral-950 sm:text-4xl">
+            Browse selections of my work below.
+          </h2>
+        </div>
+        <WorksGallery />
+      </section>
+
       <ServicesSection />
+      <ProcessSection />
       <AboutSection />
       <FaqSection />
       <ContactSection />

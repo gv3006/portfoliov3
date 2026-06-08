@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/reveal"
 import { Section, SectionHeading } from "./section"
+import Image from "next/image"
 
 const paragraphs = [
   "I'm a medical student with a strong interest in the intersection of medicine, technology, design, and patient communication. I build modern websites for physicians and healthcare practices that want their online presence to reflect the quality of care they provide.",
@@ -15,10 +16,23 @@ export function AboutSection() {
     <Section id="about">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5">
-          <SectionHeading
-            eyebrow="About Me"
-            title="A medical student building better websites for doctors."
-          />
+          <div className="space-y-10">
+            <SectionHeading
+              eyebrow="About Me"
+              title="A medical student building better websites for doctors."
+            />
+            <div className="mx-auto w-full max-w-64 overflow-hidden rounded-3xl border border-neutral-900/10 bg-white p-2 shadow-lg shadow-neutral-900/10">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-100">
+                <Image
+                  src="/placeholder-user.jpg"
+                  alt="Headshot placeholder"
+                  fill
+                  className="object-cover"
+                  sizes="16rem"
+                />
+              </div>
+            </div>
+          </div>
         </Reveal>
 
         <div className="lg:col-span-7">

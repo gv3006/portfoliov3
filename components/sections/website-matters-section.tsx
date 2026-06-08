@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Section, SectionHeading } from "./section"
+import { Section } from "./section"
 import { Reveal } from "@/components/reveal"
+import { BrowserMockup } from "@/components/sample-graphics"
 
 function Cite({ children }: { children: string }) {
   return (
@@ -124,13 +125,31 @@ const references = [
 export function WebsiteMattersSection() {
   return (
     <Section id="why-it-matters">
-      <Reveal>
-        <SectionHeading
-          eyebrow="Evidence-Based Digital Presence"
-          title="Why Your Website Matters"
-          description="Websites influence private practice through four key mechanisms: patient acquisition, first impressions and patient decisions, reputation management, and practice differentiation in an increasingly competitive digital marketplace."
-        />
-      </Reveal>
+      <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.8fr]">
+        <Reveal>
+          <header className="max-w-3xl">
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-cyan-700/70">
+              Evidence-Based Digital Presence
+            </p>
+            <h2 className="why-matters-heading-load mt-4 text-balance font-mono text-4xl uppercase tracking-tight md:text-6xl">
+              Why Your Website Matters
+            </h2>
+            <p className="why-matters-subheading-load mt-6 text-pretty text-base leading-relaxed text-neutral-600 md:text-lg">
+              Websites influence private practice through four key mechanisms: patient acquisition, first impressions and
+              patient decisions, reputation management, and practice differentiation in an increasingly competitive
+              digital marketplace.
+            </p>
+          </header>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <BrowserMockup
+            specialty="Patient Path"
+            title="Trust signals, services, and contact paths in one place"
+            accent="cyan"
+          />
+        </Reveal>
+      </div>
 
       <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
         {reasons.map((reason, index) => (
