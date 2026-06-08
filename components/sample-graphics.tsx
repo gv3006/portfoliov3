@@ -129,8 +129,7 @@ export function ProcessPreview({ label, title, className }: ProcessPreviewProps)
       )}
       aria-label={`${label} process graphic`}
     >
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-cyan-900/60">{label}</span>
+      <div className="flex justify-end">
         <span className="h-2 w-8 rounded-full bg-cyan-700/25" />
       </div>
       <div className="mt-4 rounded-xl bg-cyan-50 p-3">

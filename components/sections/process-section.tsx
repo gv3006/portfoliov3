@@ -56,13 +56,8 @@ export function ProcessSection() {
                 <h3 className="font-mono text-lg tracking-[0.2em] uppercase">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-600 text-pretty">{step.description}</p>
               </div>
-              <div className="md:col-span-3">
-                <ProcessPreview label={step.label} title={step.preview} />
-              </div>
-              <div className="md:col-span-2 md:text-right">
-                <span className="inline-block font-mono text-xs tracking-widest uppercase text-cyan-900/70 border border-cyan-700/20 bg-cyan-50 rounded-full px-4 py-1">
-                  {step.label}
-                </span>
+              <div className="md:col-span-5 md:flex md:justify-end">
+                <ProcessPreview label={step.label} title={step.preview} className="w-full md:max-w-sm" />
               </div>
             </article>
           </ScrollSlideIn>
