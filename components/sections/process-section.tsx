@@ -1,7 +1,6 @@
 import { Section, SectionHeading } from "./section"
 import { Reveal } from "@/components/reveal"
-import { ScrollSlideIn } from "@/components/scroll-slide-in"
-import { ProcessPreview } from "@/components/sample-graphics"
+import { ProcessMotionTimeline } from "./process-motion-timeline"
 
 const steps = [
   {
@@ -47,22 +46,7 @@ export function ProcessSection() {
       <Reveal>
         <SectionHeading eyebrow="Simple Start" title="Process" description="Make it feel easy." />
       </Reveal>
-      <div className="mt-16 overflow-x-clip divide-y divide-neutral-900/10 border-t border-neutral-900/10">
-        {steps.map((step, index) => (
-          <ScrollSlideIn key={step.number} stagger={index * 0.04}>
-            <article className="grid grid-cols-1 md:grid-cols-12 gap-4 py-8 group transition-colors hover:bg-cyan-50/50 -mx-6 px-6">
-              <div className="md:col-span-1 font-mono text-xs tracking-widest text-cyan-800/55">{step.number}</div>
-              <div className="md:col-span-6">
-                <h3 className="font-mono text-lg tracking-[0.2em] uppercase">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600 text-pretty">{step.description}</p>
-              </div>
-              <div className="md:col-span-5 md:flex md:justify-end">
-                <ProcessPreview label={step.label} title={step.preview} className="w-full md:max-w-sm" />
-              </div>
-            </article>
-          </ScrollSlideIn>
-        ))}
-      </div>
+      <ProcessMotionTimeline steps={steps} />
     </Section>
   )
 }

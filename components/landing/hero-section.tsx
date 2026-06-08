@@ -203,7 +203,7 @@ export function HeroSection() {
                 </span>
               </span>
 
-              <span className="block whitespace-nowrap">Let's get started.</span>
+              <span className="block whitespace-nowrap">Let&apos;s get started.</span>
             </h1>
           </div>
         </div>
