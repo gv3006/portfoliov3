@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Menu } from "lucide-react"
+import { ScrollSmoother } from "gsap/ScrollSmoother"
 
 import {
   Sheet,
@@ -22,10 +23,29 @@ const links = [
   { id: "contact", label: "GET IN TOUCH" },
 ]
 
+function scrollToTop() {
+  const smoother = ScrollSmoother.get()
+
+  if (smoother) {
+    smoother.scrollTo(0, true)
+  } else {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+}
+
 function scrollToId(id: string) {
-  const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" })
+  const target = document.getElementById(id)
+  if (!target) return
+
+  const smoother = ScrollSmoother.get()
+  const headerOffset = 72
+
+  if (smoother) {
+    const y = smoother.offset(target, "top top") - headerOffset
+    smoother.scrollTo(Math.max(0, y), true)
+  } else {
+    const y = target.getBoundingClientRect().top + window.scrollY - headerOffset
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" })
   }
 }
 
@@ -33,22 +53,28 @@ export function SiteHeader() {
   const [active, setActive] = useState<string>("")
 
   useEffect(() => {
-    const sections = links.map((link) => document.getElementById(link.id)).filter(Boolean) as HTMLElement[]
+    const sections = links
+      .map((link) => document.getElementById(link.id))
+      .filter(Boolean) as HTMLElement[]
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Pick the entry most in view near the top of the viewport.
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
         if (visible[0]) {
           setActive(visible[0].target.id)
         }
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+      {
+        rootMargin: "-30% 0px -60% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      },
     )
 
     sections.forEach((section) => observer.observe(section))
+
     return () => observer.disconnect()
   }, [])
 
@@ -56,17 +82,17 @@ export function SiteHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-neutral-900/10 bg-white/75 px-4 py-2 shadow-sm shadow-neutral-900/5 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 font-mono tracking-wider md:hidden">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="min-w-0 truncate text-sm font-semibold text-neutral-950 transition-colors"
+          onClick={scrollToTop}
+          className="min-w-0 cursor-pointer truncate text-sm font-semibold text-neutral-950 transition-colors"
         >
-          STUDIO PIXELÂ®
+          STUDIO PIXEL®
         </button>
 
         <div className="flex shrink-0 items-center gap-2">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={scrollToTop}
             aria-label="Back to top"
-            className="flex h-9 w-9 items-center justify-center text-neutral-950 transition-colors"
+            className="flex h-9 w-9 cursor-pointer items-center justify-center text-neutral-950 transition-colors"
           >
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="8" height="8" fill="currentColor" />
@@ -81,24 +107,26 @@ export function SiteHeader() {
               <button
                 type="button"
                 aria-label="Open navigation menu"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-900/10 bg-white/70 text-neutral-950 shadow-sm shadow-neutral-900/5 transition-colors hover:border-cyan-700/25 hover:text-cyan-900"
+                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-neutral-900/10 bg-white/70 text-neutral-950 shadow-sm shadow-neutral-900/5 transition-colors hover:border-cyan-700/25 hover:text-cyan-900"
               >
                 <Menu className="h-4 w-4" />
               </button>
             </SheetTrigger>
+
             <SheetContent className="w-[min(20rem,calc(100vw-2rem))] border-neutral-900/10 bg-[#fffaf3] p-0">
               <SheetHeader className="border-b border-neutral-900/10 p-6 text-left">
                 <SheetTitle className="font-mono text-sm uppercase tracking-[0.22em] text-neutral-950">
                   Navigation
                 </SheetTitle>
               </SheetHeader>
+
               <nav className="flex flex-col p-3">
                 {links.map((link) => (
                   <SheetClose asChild key={link.id}>
                     <button
                       onClick={() => scrollToId(link.id)}
                       aria-current={active === link.id ? "location" : undefined}
-                      className="rounded-xl px-3 py-4 text-left font-mono text-sm uppercase tracking-[0.16em] text-neutral-950 transition-colors hover:bg-cyan-50 hover:text-cyan-900"
+                      className="cursor-pointer rounded-xl px-3 py-4 text-left font-mono text-sm uppercase tracking-[0.16em] text-neutral-950 transition-colors hover:bg-cyan-50 hover:text-cyan-900"
                     >
                       {link.label}
                     </button>
@@ -112,25 +140,27 @@ export function SiteHeader() {
 
       <nav className="mx-auto hidden max-w-7xl items-center justify-center gap-6 overflow-x-auto text-sm font-mono tracking-wider md:flex">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-neutral-950 transition-colors font-semibold"
+          onClick={scrollToTop}
+          className="cursor-pointer text-neutral-950 transition-colors font-semibold"
         >
           STUDIO PIXEL®
         </button>
+
         {links.map((link) => (
           <button
             key={link.id}
             onClick={() => scrollToId(link.id)}
             aria-current={active === link.id ? "location" : undefined}
-            className="text-neutral-950 transition-colors"
+            className="cursor-pointer text-neutral-950 transition-colors"
           >
             {link.label}
           </button>
         ))}
+
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           aria-label="Back to top"
-          className="w-8 h-8 flex items-center justify-center text-neutral-950 transition-colors"
+          className="w-8 h-8 flex cursor-pointer items-center justify-center text-neutral-950 transition-colors"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="8" height="8" fill="currentColor" />

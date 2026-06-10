@@ -17,7 +17,7 @@ export default function SmoothScroller() {
     ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1,
+      smooth: 1.5,
       effects: false,
       smoothTouch: 0.1,
       normalizeScroll: true,

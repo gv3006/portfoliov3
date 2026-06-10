@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This is a Next.js App Router project. Route files live in `app/`, with `app/page.tsx` composing the main portfolio page and `app/layout.tsx` defining the shared shell. Reusable React components live in `components/`; section components are in `components/sections/`, and shadcn/Radix primitives are in `components/ui/`. Custom hooks belong in `hooks/`, utilities in `lib/`, global CSS in `app/globals.css` and `styles/globals.css`, and static images/icons in `public/`.
+This is a Next.js App Router project. Route files live in `app/`, with `app/page.tsx` composing the main portfolio page and `app/layout.tsx` defining the shared shell. Reusable React components live in `components/`; section components are in `components/sections/`, and shadcn/Radix primitives are in `components/ui/`. Custom hooks belong in `hooks/`, utilities in `lib/`, global CSS in `app/globals.css` and `styles/globals.css`, and static images/icons in `public/`. Implement with GSAP compatibility.
 
 Use the `@/*` alias for internal imports, for example `@/components/site-header`.
 
