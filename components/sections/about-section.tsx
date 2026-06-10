@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/reveal"
 import { Section, SectionHeading } from "./section"
 import Image from "next/image"
 
@@ -15,11 +14,12 @@ export function AboutSection() {
   return (
     <Section id="about">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
+        <div className="lg:col-span-5">
           <div className="space-y-10">
             <SectionHeading
               eyebrow="About Me"
               title="A medical student building better websites for doctors."
+              revealVariant="none"
             />
             <div className="mx-auto w-full max-w-56 overflow-hidden rounded-2xl border border-neutral-900/10 bg-white p-2 shadow-lg shadow-neutral-900/10 md:max-w-64 md:rounded-3xl">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-100">
@@ -33,21 +33,19 @@ export function AboutSection() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
         <div className="lg:col-span-7">
           <div className="space-y-5 border-l border-neutral-900/10 pl-5 md:space-y-6 md:pl-10">
-            {paragraphs.map((paragraph, index) => (
-              <Reveal key={paragraph} delay={index * 70} rootMargin="0px 0px 15% 0px" threshold={0}>
-                <p className="text-pretty text-base leading-relaxed text-neutral-600 md:text-lg">{paragraph}</p>
-              </Reveal>
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-pretty text-base leading-relaxed text-neutral-600 md:text-lg">
+                {paragraph}
+              </p>
             ))}
 
-            <Reveal delay={paragraphs.length * 70} rootMargin="0px 0px 15% 0px" threshold={0}>
-              <p className="pt-4 font-mono text-sm uppercase leading-relaxed tracking-[0.16em] text-neutral-950 md:tracking-[0.24em]">
-                -George Verdelis
-              </p>
-            </Reveal>
+            <p className="pt-4 font-mono text-sm uppercase leading-relaxed tracking-[0.16em] text-neutral-950 md:tracking-[0.24em]">
+              -George Verdelis
+            </p>
           </div>
         </div>
       </div>

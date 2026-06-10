@@ -184,7 +184,7 @@ export function HeroSection() {
           >
             <span className="inline-flex max-w-full items-center gap-3 text-sm font-mono text-white/60">
               <span className="h-px w-6 shrink-0 bg-white/30 sm:w-8" />
-              Modern Healthcare Website Design
+              Modern Website Design in Healthcare
             </span>
           </div>
 

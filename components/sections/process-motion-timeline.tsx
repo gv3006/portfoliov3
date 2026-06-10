@@ -7,6 +7,7 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import { ProcessPreview } from "@/components/sample-graphics"
+import { GsapSlotNumber } from "@/components/gsap-slot-number"
 import { cn } from "@/lib/utils"
 
 gsap.registerPlugin(useGSAP, MotionPathPlugin, ScrollTrigger)
@@ -336,9 +337,12 @@ export function ProcessMotionTimeline({ steps }: ProcessMotionTimelineProps) {
               )}
             >
               <div className="flex min-w-0 items-start gap-3 md:gap-4">
-                <span className="shrink-0 font-mono text-xs tracking-[0.28em] text-cyan-800/45 md:tracking-[0.35em]">
-                  {step.number}
-                </span>
+                <GsapSlotNumber
+                  value={step.number}
+                  delay={index * 0.08}
+                  ariaLabel={`Step ${step.number}`}
+                  className="shrink-0 font-mono text-xs tracking-[0.28em] text-cyan-800/45 md:tracking-[0.35em]"
+                />
 
                 <div className="min-w-0">
                   <h3 className="text-balance font-mono text-base uppercase tracking-[0.12em] text-neutral-950 md:text-lg md:tracking-[0.18em]">

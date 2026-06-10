@@ -1,5 +1,6 @@
 import { Section, SectionHeading } from "./section"
-import { Reveal } from "@/components/reveal"
+import { GsapHoverCard } from "@/components/gsap-hover-card"
+import { GsapSlotNumber } from "@/components/gsap-slot-number"
 
 const services = [
   {
@@ -47,30 +48,36 @@ const services = [
 export function ServicesSection() {
   return (
     <Section id="services">
-      <Reveal>
-        <SectionHeading
-          eyebrow="What We Improve"
-          title="Services"
-          description="Focused website support for physicians and private practices that need a clearer, more trustworthy online presence."
-        />
-      </Reveal>
+      <SectionHeading
+        eyebrow="What We Improve"
+        title="Services"
+        description="Focused website support for physicians and private practices that need a clearer, more trustworthy online presence."
+        revealVariant="standard"
+      />
+
       <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2">
         {services.map((service, index) => (
-          <Reveal key={service.number} className="h-full" delay={index * 80} rootMargin="0px 0px 15% 0px" threshold={0}>
-            <article className="group relative h-full overflow-hidden rounded-2xl border border-neutral-900/10 bg-white p-6 shadow-sm shadow-neutral-900/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-700/20 hover:bg-[#fbfcfa] hover:shadow-lg hover:shadow-cyan-950/5 focus-within:border-cyan-700/20 focus-within:bg-[#fbfcfa] md:rounded-3xl md:p-10">
-              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(8,145,178,0.10),transparent_34%)]" />
-              </div>
+          <GsapHoverCard
+            key={service.number}
+            className="group relative h-full overflow-hidden rounded-2xl border border-neutral-900/10 bg-white p-6 shadow-sm shadow-neutral-900/5 transition-colors duration-300 ease-out hover:border-neutral-900/20 hover:bg-[#fbfcfa] hover:shadow-lg hover:shadow-neutral-900/10 focus-within:border-neutral-900/20 focus-within:bg-[#fbfcfa] md:rounded-3xl md:p-10"
+          >
+            <div className="relative z-10">
+              <GsapSlotNumber
+                value={service.number}
+                delay={index * 0.08}
+                ariaLabel={`Service ${service.number}`}
+                className="font-mono text-xs tracking-[0.28em] text-neutral-500/70 md:tracking-[0.35em]"
+              />
 
-              <div className="relative z-10">
-                <span className="font-mono text-xs tracking-[0.28em] text-cyan-800/45 md:tracking-[0.35em]">{service.number}</span>
-                <h3 className="mt-5 text-balance font-mono text-lg uppercase tracking-[0.12em] text-neutral-950 md:mt-6 md:text-xl md:tracking-[0.18em]">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-pretty text-sm leading-relaxed text-neutral-600">{service.description}</p>
-              </div>
-            </article>
-          </Reveal>
+              <h3 className="mt-5 text-balance font-mono text-lg uppercase tracking-[0.12em] text-neutral-950 md:mt-6 md:text-xl md:tracking-[0.18em]">
+                {service.title}
+              </h3>
+
+              <p className="mt-4 text-pretty text-sm leading-relaxed text-neutral-600">
+                {service.description}
+              </p>
+            </div>
+          </GsapHoverCard>
         ))}
       </div>
     </Section>

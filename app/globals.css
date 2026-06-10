@@ -175,38 +175,6 @@
   }
 }
 
-.why-matters-heading-load,
-.why-matters-subheading-load {
-  animation: why-matters-load-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.why-matters-subheading-load {
-  animation-delay: 140ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .why-matters-heading-load,
-  .why-matters-subheading-load {
-    animation: none;
-  }
-}
-
-@keyframes why-matters-load-in {
-  0% {
-    opacity: 0;
-    transform: translateY(18px);
-    filter: blur(8px);
-    clip-path: inset(0 0 100% 0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-    clip-path: inset(0 0 0 0);
-  }
-}
-
 @keyframes works-gallery-scroll {
   from {
     transform: translateX(0);

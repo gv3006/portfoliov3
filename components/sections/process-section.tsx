@@ -1,5 +1,4 @@
 import { Section, SectionHeading } from "./section"
-import { Reveal } from "@/components/reveal"
 import { ProcessMotionTimeline } from "./process-motion-timeline"
 
 const steps = [
@@ -43,9 +42,12 @@ const steps = [
 export function ProcessSection() {
   return (
     <Section id="process">
-      <Reveal>
-        <SectionHeading eyebrow="Simple Start" title="Process" description="Make it feel easy." />
-      </Reveal>
+      <SectionHeading
+        eyebrow="Simple Start"
+        title="Process"
+        description="Make it feel easy."
+        revealVariant="standard"
+      />
       <ProcessMotionTimeline steps={steps} />
     </Section>
   )
