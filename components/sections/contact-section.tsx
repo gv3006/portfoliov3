@@ -20,7 +20,7 @@ export function ContactSection() {
         <SectionHeading
           eyebrow="Say Hello"
           title="Get In Touch"
-          description="Tell us about your project. This is a placeholder form - submissions are not yet wired to a backend."
+          description="Reach out to learn more."
         />
       </Reveal>
       <div className="mt-10 grid grid-cols-1 gap-10 md:mt-16 lg:grid-cols-2 lg:gap-12">
@@ -83,24 +83,20 @@ export function ContactSection() {
           <div className="space-y-8 font-mono text-sm">
             <div>
               <p className="text-xs tracking-widest uppercase text-neutral-500">Email</p>
-              <p className="mt-2 text-neutral-700">hello@studiopixel.example</p>
+              <p className="mt-2 text-neutral-700">georgiverdelis@gmail.com</p>
             </div>
             <div>
               <p className="text-xs tracking-widest uppercase text-neutral-500">Studio</p>
               <p className="mt-2 text-neutral-700 leading-relaxed">
-                123 Placeholder Ave
-                <br />
-                Suite 000
-                <br />
-                New York, NY 10000
+                Based out of Madison, WI.
               </p>
             </div>
             <div>
               <p className="text-xs tracking-widest uppercase text-neutral-500">Social</p>
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-neutral-700">
-                <span className="hover:text-cyan-800 transition-colors cursor-pointer">Instagram</span>
-                <span className="hover:text-cyan-800 transition-colors cursor-pointer">Behance</span>
-                <span className="hover:text-cyan-800 transition-colors cursor-pointer">LinkedIn</span>
+                <span className="hover:text-cyan-800 transition-colors cursor-pointer">-coming soon!-</span>
+                <span className="hover:text-cyan-800 transition-colors cursor-pointer"></span>
+                <span className="hover:text-cyan-800 transition-colors cursor-pointer"></span>
               </div>
             </div>
           </div>

@@ -113,7 +113,7 @@ function BlurWord({ word, trigger }: { word: string; trigger: number }) {
               transition: "color 0.4s ease",
             }}
           >
-            {char}
+            {char === " " ? "\u00A0" : char}
           </span>
         );
       })}
