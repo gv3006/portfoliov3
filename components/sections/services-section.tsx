@@ -53,6 +53,7 @@ export function ServicesSection() {
         title="Services"
         description="Focused website support for physicians and private practices that need a clearer, more trustworthy online presence."
         revealVariant="standard"
+        morphKind="services"
       />
 
       <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2">

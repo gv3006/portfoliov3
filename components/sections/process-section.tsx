@@ -47,6 +47,7 @@ export function ProcessSection() {
         title="Process"
         description="Make it feel easy."
         revealVariant="standard"
+        morphKind="process"
       />
       <ProcessMotionTimeline steps={steps} />
     </Section>

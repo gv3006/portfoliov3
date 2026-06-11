@@ -3,6 +3,7 @@ import { Section } from "./section"
 import { GsapHoverCard } from "@/components/gsap-hover-card"
 import { GsapHeadingReveal } from "@/components/gsap-heading-reveal"
 import { GsapSlotNumber } from "@/components/gsap-slot-number"
+import { ScrollMorphDot } from "@/components/scroll-morph-dot"
 
 function Cite({ children }: { children: string }) {
   return (
@@ -126,32 +127,36 @@ const references = [
 export function WebsiteMattersSection() {
   return (
     <Section id="why-it-matters">
-      <GsapHeadingReveal variant="masked">
-        <header className="max-w-3xl">
-          <p
-            data-heading-reveal="eyebrow"
-            className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500/80 md:tracking-[0.35em]"
-          >
-            Evidence-Based Digital Presence
-          </p>
+      <header className="flex max-w-6xl items-start justify-between gap-3">
+        <GsapHeadingReveal variant="masked" className="min-w-0 flex-1">
+          <div className="max-w-3xl">
+            <p
+              data-heading-reveal="eyebrow"
+              className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500/80 md:tracking-[0.35em]"
+            >
+              Evidence-Based Digital Presence
+            </p>
 
-          <h2
-            data-heading-reveal="title"
-            className="mt-4 text-balance font-mono text-3xl uppercase tracking-tight md:text-6xl"
-          >
-            Why Your Website Matters
-          </h2>
+            <h2
+              data-heading-reveal="title"
+              className="mt-4 text-balance font-mono text-3xl uppercase tracking-tight md:text-6xl"
+            >
+              Why Your Website Matters
+            </h2>
 
-          <p
-            data-heading-reveal="description"
-            className="mt-6 text-pretty text-base leading-relaxed text-neutral-600 md:text-lg"
-          >
-            Websites influence private practice through four key mechanisms: patient acquisition, first impressions and
-            patient decisions, reputation management, and practice differentiation in an increasingly competitive
-            digital marketplace.
-          </p>
-        </header>
-      </GsapHeadingReveal>
+            <p
+              data-heading-reveal="description"
+              className="mt-6 text-pretty text-base leading-relaxed text-neutral-600 md:text-lg"
+            >
+              Websites influence private practice through four key mechanisms: patient acquisition, first impressions and
+              patient decisions, reputation management, and practice differentiation in an increasingly competitive
+              digital marketplace.
+            </p>
+          </div>
+        </GsapHeadingReveal>
+
+        <ScrollMorphDot kind="website" className="mt-6 text-current md:mt-8" />
+      </header>
 
       <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2">
         {reasons.map((reason, index) => (

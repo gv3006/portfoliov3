@@ -1,11 +1,13 @@
 import type React from "react"
 import { GsapHeadingReveal, type HeadingRevealVariant } from "@/components/gsap-heading-reveal"
+import { ScrollMorphDot, type MorphKind } from "@/components/scroll-morph-dot"
 
 interface SectionHeadingProps {
   eyebrow?: string
   title: string
   description?: string
   revealVariant?: HeadingRevealVariant
+  morphKind?: MorphKind
 }
 
 export function SectionHeading({
@@ -13,36 +15,41 @@ export function SectionHeading({
   title,
   description,
   revealVariant = "standard",
+  morphKind,
 }: SectionHeadingProps) {
   return (
-    <GsapHeadingReveal variant={revealVariant}>
-      <header className="max-w-3xl">
-        {eyebrow ? (
-          <p
-            data-heading-reveal="eyebrow"
-            className="font-mono text-xs tracking-[0.22em] uppercase text-cyan-700/70 md:tracking-[0.35em]"
-          >
-            {eyebrow}
-          </p>
-        ) : null}
+    <header className="flex max-w-6xl items-start justify-between gap-3">
+      <GsapHeadingReveal variant={revealVariant} className="min-w-0 flex-1">
+        <div className="max-w-3xl">
+          {eyebrow ? (
+            <p
+              data-heading-reveal="eyebrow"
+              className="font-mono text-xs tracking-[0.22em] uppercase text-cyan-700/70 md:tracking-[0.35em]"
+            >
+              {eyebrow}
+            </p>
+          ) : null}
 
-        <h2
-          data-heading-reveal="title"
-          className="mt-4 text-balance font-mono text-3xl uppercase tracking-tight md:text-6xl"
-        >
-          {title}
-        </h2>
-
-        {description ? (
-          <p
-            data-heading-reveal="description"
-            className="mt-6 text-base leading-relaxed text-neutral-600 text-pretty md:text-lg"
+          <h2
+            data-heading-reveal="title"
+            className="mt-4 text-balance font-mono text-3xl uppercase tracking-tight md:text-6xl"
           >
-            {description}
-          </p>
-        ) : null}
-      </header>
-    </GsapHeadingReveal>
+            {title}
+          </h2>
+
+          {description ? (
+            <p
+              data-heading-reveal="description"
+              className="mt-6 text-base leading-relaxed text-neutral-600 text-pretty md:text-lg"
+            >
+              {description}
+            </p>
+          ) : null}
+        </div>
+      </GsapHeadingReveal>
+
+      {morphKind ? <ScrollMorphDot kind={morphKind} className="mt-6 text-current md:mt-8" /> : null}
+    </header>
   )
 }
 
