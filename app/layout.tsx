@@ -7,22 +7,23 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Studio Pixel',
+  description: 'Modern website design for healthcare practices.',
+  generator: 'Next.js',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/apple-icon.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/apple-icon.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
       },
     ],
     apple: '/apple-icon.png',
