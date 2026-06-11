@@ -48,7 +48,7 @@ export function SectionHeading({
         </div>
       </GsapHeadingReveal>
 
-      {morphKind ? <ScrollMorphDot kind={morphKind} className="mt-6 text-current md:mt-8" /> : null}
+      {morphKind ? <ScrollMorphDot kind={morphKind} className="-mt-1 text-current md:-mt-2" /> : null}
     </header>
   )
 }

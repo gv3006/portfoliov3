@@ -155,7 +155,7 @@ export function WebsiteMattersSection() {
           </div>
         </GsapHeadingReveal>
 
-        <ScrollMorphDot kind="website" className="mt-6 text-current md:mt-8" />
+        <ScrollMorphDot kind="website" className="-mt-1 text-current md:-mt-2" />
       </header>
 
       <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2">

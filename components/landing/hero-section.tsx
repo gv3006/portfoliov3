@@ -141,7 +141,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex flex-col justify-center items-start overflow-hidden bg-black">
       {/* Background */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#05070b]">
-        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
+        <div className="hero-bg absolute inset-0" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70" />

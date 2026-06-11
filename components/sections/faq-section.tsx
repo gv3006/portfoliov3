@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Section, SectionHeading } from "./section"
 
+
 const faqs = [
   {
     question: "What types of doctors or practices do you work with?",
@@ -52,6 +53,7 @@ export function FaqSection() {
         title="FAQ"
         description="Common questions about building a clearer, more professional website for your practice."
         revealVariant="standard"
+        morphKind="faq"
       />
 
       <div className="mt-10 overflow-hidden rounded-2xl border border-neutral-900/10 bg-white/90 shadow-sm shadow-neutral-900/5 md:mt-16 md:rounded-3xl">
