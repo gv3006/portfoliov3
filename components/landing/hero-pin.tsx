@@ -25,13 +25,31 @@ export function HeroPin({ children }: HeroPinProps) {
         return
       }
 
+      const copy = trigger.querySelector<HTMLElement>("[data-hero-pin-copy]")
+      const endBoundary = document.querySelector<HTMLElement>("[data-hero-pin-end]")
+
+      const getPinDistance = () => {
+        if (!copy || !endBoundary) {
+          return 1
+        }
+
+        const triggerTop = trigger.getBoundingClientRect().top + window.scrollY
+        const boundaryTop = endBoundary.getBoundingClientRect().top + window.scrollY
+        const copyBottom = copy.getBoundingClientRect().bottom
+        const gap = gsap.utils.clamp(24, 56, window.innerHeight * 0.045)
+        const targetBoundaryY = Math.min(window.innerHeight - gap, copyBottom + gap)
+
+        return Math.max(boundaryTop - targetBoundaryY - triggerTop, 1)
+      }
+
       const scrollTrigger = ScrollTrigger.create({
         trigger,
         pin,
         start: "top top",
-        end: "bottom bottom",
+        end: () => `+=${getPinDistance()}`,
         pinSpacing: false,
         invalidateOnRefresh: true,
+        anticipatePin: 1,
       })
 
       return () => scrollTrigger.kill()

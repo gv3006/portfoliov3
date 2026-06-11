@@ -26,7 +26,10 @@ export default function Page() {
               <HeroSection />
             </HeroPin>
 
-            <main className="relative z-10 -mt-[clamp(7rem,40vh,24rem)] overflow-hidden rounded-t-[1.5rem] bg-[radial-gradient(circle_at_15%_8%,rgba(255,226,199,0.55),transparent_34%),radial-gradient(circle_at_85%_72%,rgba(207,244,242,0.42),transparent_32%),linear-gradient(135deg,#fffaf3_0%,#f7f8f5_46%,#f2f7f2_100%)] shadow-[0_-28px_80px_rgba(0,0,0,0.28)] md:rounded-t-[2rem]">
+            <main
+              data-hero-pin-end
+              className="relative z-10 -mt-[clamp(7rem,40vh,24rem)] overflow-hidden rounded-t-[1.5rem] bg-[radial-gradient(circle_at_15%_8%,rgba(255,226,199,0.55),transparent_34%),radial-gradient(circle_at_85%_72%,rgba(207,244,242,0.42),transparent_32%),linear-gradient(135deg,#fffaf3_0%,#f7f8f5_46%,#f2f7f2_100%)] shadow-[0_-28px_80px_rgba(0,0,0,0.28)] md:rounded-t-[2rem]"
+            >
 
               <div className="relative z-10">
                 {/* In-page sections */}
