@@ -36,6 +36,23 @@ export function GsapHeadingReveal({
 
       if (!eyebrow && !heading && !description) return
 
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches
+      const finePointer = window.matchMedia("(pointer: fine)").matches
+      const isTouchOnly =
+        ScrollTrigger.isTouch === 1 || (coarsePointer && !finePointer)
+
+      if (isTouchOnly) {
+        gsap.set([eyebrow, heading, description].filter(Boolean), {
+          opacity: 1,
+          y: 0,
+          filter: "none",
+          clipPath: "none",
+          clearProps: "transform",
+        })
+
+        return
+      }
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root,
