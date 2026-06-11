@@ -25,6 +25,15 @@ export function HeroPin({ children }: HeroPinProps) {
         return
       }
 
+      const isTouchDevice =
+        ScrollTrigger.isTouch ||
+        window.matchMedia("(pointer: coarse)").matches
+
+      if (isTouchDevice) {
+        ScrollTrigger.refresh(true)
+        return
+      }
+
       const copy = trigger.querySelector<HTMLElement>("[data-hero-pin-copy]")
       const endBoundary = document.querySelector<HTMLElement>("[data-hero-pin-end]")
 

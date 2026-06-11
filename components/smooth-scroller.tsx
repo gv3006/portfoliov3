@@ -23,21 +23,10 @@ export default function SmoothScroller() {
       ScrollTrigger.isTouch ||
       window.matchMedia("(pointer: coarse)").matches
 
-    // Most stable mobile behavior: native scroll + ScrollTrigger normalization.
+    // Touch devices are most stable with native browser scrolling.
     if (isTouchDevice) {
-      const normalizer = ScrollTrigger.normalizeScroll({
-        allowNestedScroll: true,
-        lockAxis: false,
-        momentum: (self) => Math.min(3, self.velocityY / 1000),
-        type: "touch,wheel,pointer",
-      })
-
       ScrollTrigger.refresh(true)
-
-      return () => {
-        normalizer?.kill?.()
-        ScrollTrigger.normalizeScroll(false)
-      }
+      return
     }
 
     const smoother = ScrollSmoother.create({

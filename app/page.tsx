@@ -10,7 +10,6 @@ import { AboutSection } from "@/components/sections/about-section"
 import { FaqSection } from "@/components/sections/faq-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import SmoothScroller from "@/components/smooth-scroller"
-import { SiteFlowLine } from "@/components/site-flow-line"
 
 
 export default function Page() {
