@@ -313,7 +313,7 @@ export function ScrollMorphDot({
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger,
-          start: "top 80%",
+          start: "top 60%",
           end: "top 25%",
           scrub: 0.75,
           invalidateOnRefresh: true,

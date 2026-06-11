@@ -41,8 +41,8 @@ const reasons = [
         <strong className="font-semibold text-neutral-900">information found online</strong>.<Cite>3-5</Cite> Many
         patients seek health information online, and online reviews are frequently used alongside recommendations from
         family or friends.<Cite>4-5</Cite> A well-maintained website helps communicate expertise, care philosophy,
-        services offered, insurance participation, office hours, and{" "}
-        <strong className="font-semibold text-neutral-900">contact information</strong>.<Cite>6</Cite>
+        services offered, insurance participation, office hours, and
+        contact information.<Cite>6</Cite>
       </>
     ),
   },

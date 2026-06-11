@@ -11,6 +11,7 @@ export default function SmoothScroller() {
   useGSAP(() => {
     const wrapper = document.querySelector("#smooth-wrapper")
     const content = document.querySelector("#smooth-content")
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches
 
     if (!wrapper || !content) return
 
@@ -20,7 +21,7 @@ export default function SmoothScroller() {
       smooth: 1.5,
       effects: false,
       smoothTouch: 0.1,
-      normalizeScroll: true,
+      normalizeScroll: !isTouchDevice,
     })
   })
 

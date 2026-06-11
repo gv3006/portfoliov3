@@ -14,6 +14,14 @@ const WORD_CYCLE_MS = 4800;
 
 function BlurWord({ word, trigger }: { word: string; trigger: number }) {
   const letters = word.split("");
+  const wordParts = (word.match(/\S+|\s+/g) ?? [word]).reduce<
+    { part: string; startIndex: number }[]
+  >((parts, part) => {
+    const previous = parts[parts.length - 1];
+    const startIndex = previous ? previous.startIndex + previous.part.length : 0;
+
+    return [...parts, { part, startIndex }];
+  }, []);
   const STAGGER = 45;
   const DURATION = 500;
   const GRADIENT_HOLD = STAGGER * letters.length + DURATION + 1200;
@@ -80,40 +88,52 @@ function BlurWord({ word, trigger }: { word: string; trigger: number }) {
 
   const gradientColors = ["#eca8d6", "#a78bfa", "#67e8f9", "#fbbf24", "#eca8d6"];
 
+  const renderLetter = (char: string, i: number) => {
+    const colorIndex = (i / Math.max(letters.length - 1, 1)) * (gradientColors.length - 1);
+    const lower = Math.floor(colorIndex);
+    const upper = Math.min(lower + 1, gradientColors.length - 1);
+    const t = colorIndex - lower;
+
+    const hexToRgb = (hex: string) => {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return [r, g, b];
+    };
+
+    const [r1, g1, b1] = hexToRgb(gradientColors[lower]);
+    const [r2, g2, b2] = hexToRgb(gradientColors[upper]);
+
+    const r = Math.round(r1 + (r2 - r1) * t);
+    const g = Math.round(g1 + (g2 - g1) * t);
+    const b = Math.round(b1 + (b2 - b1) * t);
+
+    return (
+      <span
+        key={i}
+        style={{
+          display: "inline-block",
+          opacity: letterStates[i]?.opacity ?? 0,
+          filter: `blur(${letterStates[i]?.blur ?? 20}px)`,
+          color: showGradient ? `rgb(${r}, ${g}, ${b})` : "white",
+          transition: "color 0.4s ease",
+        }}
+      >
+        {char}
+      </span>
+    );
+  };
+
   return (
     <>
-      {letters.map((char, i) => {
-        const colorIndex = (i / Math.max(letters.length - 1, 1)) * (gradientColors.length - 1);
-        const lower = Math.floor(colorIndex);
-        const upper = Math.min(lower + 1, gradientColors.length - 1);
-        const t = colorIndex - lower;
-
-        const hexToRgb = (hex: string) => {
-          const r = parseInt(hex.slice(1, 3), 16);
-          const g = parseInt(hex.slice(3, 5), 16);
-          const b = parseInt(hex.slice(5, 7), 16);
-          return [r, g, b];
-        };
-
-        const [r1, g1, b1] = hexToRgb(gradientColors[lower]);
-        const [r2, g2, b2] = hexToRgb(gradientColors[upper]);
-
-        const r = Math.round(r1 + (r2 - r1) * t);
-        const g = Math.round(g1 + (g2 - g1) * t);
-        const b = Math.round(b1 + (b2 - b1) * t);
+      {wordParts.map(({ part, startIndex }, partIndex) => {
+        if (/^\s+$/.test(part)) {
+          return <span key={partIndex}> </span>;
+        }
 
         return (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              opacity: letterStates[i]?.opacity ?? 0,
-              filter: `blur(${letterStates[i]?.blur ?? 20}px)`,
-              color: showGradient ? `rgb(${r}, ${g}, ${b})` : "white",
-              transition: "color 0.4s ease",
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
+          <span key={partIndex} className="inline-block whitespace-nowrap">
+            {part.split("").map((char, i) => renderLetter(char, startIndex + i))}
           </span>
         );
       })}
